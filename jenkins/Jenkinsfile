@@ -11,11 +11,11 @@ pipeline {
 
     stages {
         stage('Checkout') {
-            steps {
-                // Replace the Git URL below with your actual repository URL
-                git 'https://github.com/tharunkumarsa/Java_Project.git'
-            }
-        }
+    steps {
+        git branch: 'main', url: 'https://github.com/tharunkumarsa/Java_Project.git'
+    }
+}
+
 
         stage('Build') {
             steps {
@@ -35,9 +35,11 @@ pipeline {
         }
 
         stage('Deliver') {
-            steps {
-                sh './jenkins/scripts/deliver.sh'
-            }
-        }
+    steps {
+        sh 'chmod +x jenkins/scripts/deliver.sh'
+        sh './jenkins/scripts/deliver.sh'
+    }
+}
+
     }
 }
